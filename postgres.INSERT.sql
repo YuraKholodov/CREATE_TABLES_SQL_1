@@ -13,6 +13,8 @@ VALUES ('Сентиментальный боксёр', 1967), ('Кони при�
 ('Звезда по имени солнце', 1989), ('Ночь', 1986),
 ('Кто ты?', 2000), ('Уличный боец', 2001);
 
+INSERT INTO albums (album_title, year_of_release) VALUES ('Земфира не плачет', 2020);
+
 
 INSERT INTO tracks (track_name, duration, album_id)
 VALUES ('Шляпник', 250, 1), ('Баллада о бане', 219, 2), 
@@ -22,6 +24,7 @@ VALUES ('Шляпник', 250, 1), ('Баллада о бане', 219, 2),
 
 
 INSERT INTO tracks (track_name, duration, album_id) VALUES ('Любимый мой!', 230, 2);
+INSERT INTO tracks (track_name, duration, album_id) VALUES ('Мойщик намой мне купола!', 220, 1);
 
 
 INSERT INTO music_collections (title, year_of_release)
@@ -34,3 +37,7 @@ VALUES (1, 7), (1, 8), (2, 5), (2, 6), (3, 3), (3, 4), (4, 2);
 
 INSERT INTO albums_executors (album_id, executor_id)
 VALUES (1, 1), (2, 1), (3, 2), (4, 2), (5, 2), (6, 3), (7, 3), (8, 4), (9, 4);
+
+INSERT INTO albums_executors (album_id, executor_id) VALUES (10, 2);
+
+
