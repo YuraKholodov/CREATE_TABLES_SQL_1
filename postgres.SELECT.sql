@@ -20,7 +20,7 @@ WHERE nickname NOT LIKE '% %';
 
 SELECT track_name
 FROM tracks
-WHERE track_name LIKE '%мой%' OR track_name LIKE '%my%';
+WHERE string_to_array(lower(track_name), ' ') && ARRAY ['my', 'мой', 'my!', 'my?', 'my.', 'мой!', 'мой?', 'мой.'];
 
 
 SELECT gen.genre, COUNT(exe.nickname)
@@ -39,10 +39,14 @@ FROM albums as a JOIN tracks as t ON a.id = t.album_id
 GROUP BY a.album_title;
 
 
-SELECT DISTINCT exe.nickname
-FROM executors as exe JOIN albums_executors as al_exe ON exe.id = al_exe.executor_id
-JOIN albums as a ON a.id = al_exe.album_id
-WHERE a.year_of_release <> 2020;
+SELECT nickname
+FROM executors
+WHERE nickname NOT IN (
+    SELECT exe.nickname
+    FROM executors as exe JOIN albums_executors as a_e ON exe.id = a_e.executor_id
+    JOIN albums as al ON al.id = a_e.album_id
+    WHERE al.year_of_release = 2020
+);
 
 
 SELECT DISTINCT mc.title
@@ -51,5 +55,3 @@ JOIN tracks as t ON t.id = mc_tr.track_id
 JOIN albums_executors as al_exe ON t.album_id = al_exe.album_id
 JOIN executors as exe ON exe.id = al_exe.executor_id
 WHERE exe.nickname = 'ДЕЦЛ';
-
-
