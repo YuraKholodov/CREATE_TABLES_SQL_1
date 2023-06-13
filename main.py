@@ -14,7 +14,7 @@ def create_db(cur):
 
         CREATE TABLE IF NOT EXISTS phones(
             id SERIAL PRIMARY KEY,
-            phone VARCHAR(15) DEFAULT 'phone number not specified',
+            phone VARCHAR(15),
             user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
         );
         """
@@ -216,7 +216,7 @@ if __name__ == "__main__":
                 first_name="Фудзи",
                 last_name="Yama",
                 email="dsdsv@mail.ru",
-                phones="000000000",
+                phones="+7-5958-5858",
             )
 
             change_client(
